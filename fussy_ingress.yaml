@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  name: fussy
+spec:
+  rules:
+  - host: my.ingress.com
+    http:
+      paths:
+      - backend:
+          serviceName: fussy-svc-clusterip-backend
+          servicePort: 8080
+        path: /
